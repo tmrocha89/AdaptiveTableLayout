@@ -78,8 +78,8 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
     public void onItemClick(int row, int column) {
         OnItemClickListener innerListener = mInner.getOnItemClickListener();
         if (innerListener != null) {
-            int tempRow = row + 1; // need to merge matrix with table headers and without.
-            int tempColumn = column + 1; // need to merge matrix with table headers and without.
+            int tempRow = row; // need to merge matrix with table headers and without.
+            int tempColumn = column; // need to merge matrix with table headers and without.
             innerListener.onItemClick(rowIndexToId(tempRow), columnIndexToId(tempColumn));
         }
     }
@@ -88,7 +88,7 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
     public void onRowHeaderClick(int row) {
         OnItemClickListener innerListener = mInner.getOnItemClickListener();
         if (innerListener != null) {
-            int tempRow = row + 1; // need to merge matrix with table headers and without.
+            int tempRow = row; // need to merge matrix with table headers and without.
             innerListener.onRowHeaderClick(mIsSolidRowHeader ? rowIndexToId(tempRow) : tempRow);
         }
     }
@@ -97,7 +97,7 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
     public void onColumnHeaderClick(int column) {
         OnItemClickListener innerListener = mInner.getOnItemClickListener();
         if (innerListener != null) {
-            int tempColumn = column + 1; // need to merge matrix with table headers and without.
+            int tempColumn = column; // need to merge matrix with table headers and without.
             innerListener.onColumnHeaderClick(columnIndexToId(tempColumn));
         }
     }
@@ -113,8 +113,8 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
     @Override
     public void changeColumns(int columnIndex, int columnToIndex) {
 
-        int tempColumnIndex = columnIndex + 1; // need to merge matrix with table headers and without.
-        int tempColumnToIndex = columnToIndex + 1; // need to merge matrix with table headers and without.
+        int tempColumnIndex = columnIndex; // need to merge matrix with table headers and without.
+        int tempColumnToIndex = columnToIndex; // need to merge matrix with table headers and without.
 
         int fromId = columnIndexToId(tempColumnIndex);
         int toId = columnIndexToId(tempColumnToIndex);
@@ -140,8 +140,8 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
     @Override
     public void changeRows(int rowIndex, int rowToIndex, boolean solidRowHeader) {
 
-        int tempRowIndex = rowIndex + 1; // need to merge matrix with table headers and without.
-        int tempRowToIndex = rowToIndex + 1; // need to merge matrix with table headers and without.
+        int tempRowIndex = rowIndex; // need to merge matrix with table headers and without.
+        int tempRowToIndex = rowToIndex; // need to merge matrix with table headers and without.
 
         mIsSolidRowHeader = solidRowHeader;
         int fromId = rowIndexToId(tempRowIndex);
@@ -199,20 +199,20 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
 
     @Override
     public void onBindViewHolder(@NonNull VH viewHolder, int row, int column) {
-        int tempRow = row + 1; // need to merge matrix with table headers and without.
-        int tempColumn = column + 1; // need to merge matrix with table headers and without.
+        int tempRow = row; // need to merge matrix with table headers and without.
+        int tempColumn = column; // need to merge matrix with table headers and without.
         mInner.onBindViewHolder(viewHolder, rowIndexToId(tempRow), columnIndexToId(tempColumn));
     }
 
     @Override
     public void onBindHeaderColumnViewHolder(@NonNull VH viewHolder, int column) {
-        int tempColumn = column + 1; // need to merge matrix with table headers and without.
+        int tempColumn = column; // need to merge matrix with table headers and without.
         mInner.onBindHeaderColumnViewHolder(viewHolder, columnIndexToId(tempColumn));
     }
 
     @Override
     public void onBindHeaderRowViewHolder(@NonNull VH viewHolder, int row) {
-        int tempRow = row + 1; // need to merge matrix with table headers and without.
+        int tempRow = row; // need to merge matrix with table headers and without.
         mInner.onBindHeaderRowViewHolder(viewHolder, mIsSolidRowHeader ? rowIndexToId(tempRow) : tempRow);
     }
 
@@ -223,7 +223,7 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
 
     @Override
     public int getColumnWidth(int column) {
-        int tempColumn = column + 1; // need to merge matrix with table headers and without.
+        int tempColumn = column; // need to merge matrix with table headers and without.
         return mInner.getColumnWidth(columnIndexToId(tempColumn));
     }
 
@@ -234,7 +234,7 @@ class LinkedAdaptiveTableAdapterImpl<VH extends ViewHolder> extends LinkedAdapti
 
     @Override
     public int getRowHeight(int row) {
-        int tempRow = row + 1; // need to merge matrix with table headers and without.
+        int tempRow = row; // need to merge matrix with table headers and without.
         return mInner.getRowHeight(rowIndexToId(tempRow));
     }
 
