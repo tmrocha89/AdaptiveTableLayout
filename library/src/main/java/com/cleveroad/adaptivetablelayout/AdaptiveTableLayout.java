@@ -250,7 +250,7 @@ public class AdaptiveTableLayout extends ViewGroup implements ScrollHelper.Scrol
 
 
         // init manager. Not include headers
-        mManager.init(mAdapter.getRowCount() - 1, mAdapter.getColumnCount() - 1);
+        mManager.init(mAdapter.getRowCount(), mAdapter.getColumnCount());
 
         // calculate widths
         for (int count = mManager.getColumnCount(), i = 0; i < count; i++) {
@@ -925,7 +925,7 @@ public class AdaptiveTableLayout extends ViewGroup implements ScrollHelper.Scrol
     }
 
     private int getBindColumn(int column) {
-        return !isRTL() ? column : mManager.getColumnCount() - 1 - column;
+        return !isRTL() ? column : mManager.getColumnCount() - column;
     }
 
     @SuppressWarnings("unused")
@@ -1077,7 +1077,7 @@ public class AdaptiveTableLayout extends ViewGroup implements ScrollHelper.Scrol
                             if (absoluteX < deltaX) {
                                 // move column from right to left
                                 for (int i = fromColumn; i > toColumn; i--) {
-                                    shiftColumnsViews(i - 1, i);
+                                    shiftColumnsViews(i , i);
                                 }
                                 mState.setColumnDragging(true, toColumn);
                             }
@@ -1109,7 +1109,7 @@ public class AdaptiveTableLayout extends ViewGroup implements ScrollHelper.Scrol
                             if (absoluteY < deltaY) {
                                 // move column from right to left
                                 for (int i = fromRow; i > toRow; i--) {
-                                    shiftRowsViews(i - 1, i);
+                                    shiftRowsViews(i, i);
                                 }
                                 mState.setRowDragging(true, toRow);
                             }
@@ -1662,11 +1662,11 @@ public class AdaptiveTableLayout extends ViewGroup implements ScrollHelper.Scrol
         if (rowIndex == 0 && columnIndex == 0) {
             holder = mLeftTopViewHolder;
         } else if (rowIndex == 0) {
-            holder = mHeaderColumnViewHolders.get(columnIndex - 1);
+            holder = mHeaderColumnViewHolders.get(columnIndex);
         } else if (columnIndex == 0) {
-            holder = mHeaderRowViewHolders.get(rowIndex - 1);
+            holder = mHeaderRowViewHolders.get(rowIndex);
         } else {
-            holder = mViewHolders.get(rowIndex - 1, columnIndex - 1);
+            holder = mViewHolders.get(rowIndex, columnIndex);
         }
         if (holder != null) {
             viewHolderChanged(holder);
